@@ -1,14 +1,8 @@
 var tabla;
 
-//Funcion que se ejecuta al inicio
-function init() {
-    mostrarForm(false);
-    listar();
-}
-
 // Funcion limpiar
 function limpiar() {
-    $("idcategoria").val("");
+    $("#idcategoria").val("");
     $("#nombre").val("");
     $("#descripcion").val("");
 }
@@ -16,13 +10,13 @@ function limpiar() {
 //Funcion mostrar formulario
 function mostrarForm(flag) {
     limpiar();
-    if (flag) {
+    if (flag==true) {
+		$("#formularioregistros").show();
         $("#listadoregistros").hide();
-        $("formularioregistros").show();
-        $("btnGuardar").prop("disabled",false);
-    } else {
+        $("#btnGuardar").prop("disabled",false);
+    } else  {
         $("#listadoregistros").show();
-        $("formularioregistros").hide();
+        $("#formularioregistros").hide();
     }
 }
 
@@ -59,6 +53,12 @@ function listar()
 		"iDisplayLength": 5,//Paginación
 	    "order": [[ 0, "desc" ]]//Ordenar (columna,orden)
 	}).DataTable();
+}
+
+//Funcion que se ejecuta al inicio
+function init() {
+    mostrarForm(false);
+    listar();
 }
 
 init();
