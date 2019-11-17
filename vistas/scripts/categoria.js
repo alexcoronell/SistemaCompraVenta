@@ -55,10 +55,72 @@ function listar()
 	}).DataTable();
 }
 
+// Función para Guardar y Editar
+function guardaryeditar(e) {
+	e.preventDefault(); // No se activará la acción predeterminada del evento
+	$("#btnGuardar").prop("disabled", true);
+	var formData = new FormData($("#formulario")[0]);
+
+	$.ajax({
+		url: "../ajax/categoria.php?op=guardaryeditar",
+		type: "POST",
+		data: formData,
+		contentType: false,
+		processData: false,
+
+		success: function(datos) {
+			bootbox.alert(datos);
+			mostrarForm(false);
+			tabla.ajax.reload();
+		}
+	});
+	limpiar();
+}
+// Función para editar
+function mostrar(idcategoria) {
+	$.post("../ajax/categoria.php?op=mostrar", {idcategoria : idcategoria}, function(data, status) {
+		data = JSON.parse(data);
+		mostrarForm(true);
+
+		$("#nombre").val(data.nombre);
+		$("#descripcion").val(data.descripcion);
+		$("#idcategoria").val(data.idcategoria);
+	
+	})
+}
+
+// Función para descactivar registros
+function desactivar(idcategoria) {
+	bootbox.confirm("¿Está seguro de desactivar la categoría", function(result){
+		if(result) {
+			$.post("../ajax/categoria.php?op=desactivar", {idcategoria : idcategoria}, function(e){
+				bootbox.alert(e);
+				tabla.ajax.reload();
+			});
+		}
+	})
+}
+
+// Función para activar registros
+function activar(idcategoria) {
+	bootbox.confirm("¿Está seguro de activar la categoría", function(result){
+		if(result) {
+			$.post("../ajax/categoria.php?op=activar", {idcategoria : idcategoria}, function(e){
+				bootbox.alert(e);
+				tabla.ajax.reload();
+			});
+		}
+	})
+}
+
 //Funcion que se ejecuta al inicio
 function init() {
     mostrarForm(false);
-    listar();
+	listar();
+	
+	$("#formulario").on("submit", function(e) {
+		guardaryeditar(e);
+	})
 }
 
 init();

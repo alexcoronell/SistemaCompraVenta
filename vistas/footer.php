@@ -20,5 +20,8 @@
   <script src="../public/datatables/pdfmake.min.js"></script>
   <script src="../public/datatables/vfs_fonts.js"></script>
 
+  <!-- Bootbox -->
+  <script src="../public/js/bootbox.min.js"></script>
+
   </body>
 </html>

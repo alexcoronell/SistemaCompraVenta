@@ -36,7 +36,7 @@ Class Categoria {
     // Implementar un método para mostrar los datos de un registro a modificar
     public function mostrar($idcategoria) {
         $sql = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria'";
-        ejecutarConsultaSimpleFila($sql);
+        return ejecutarConsultaSimpleFila($sql);
     }
     // Implementar un método para listar los registros
     public function listar() {

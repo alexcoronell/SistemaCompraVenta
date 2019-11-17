@@ -33,11 +33,33 @@ require 'header.php';
                           <th>Estado</th>
                         </tfoot>
                       </table>
-                    </div> <!-- fin div Formulario -->
+                    </div> 
                     <!--Fin centro -->
                     <div id="formularioregistros" class="panel-body" style="height: 400px;">
-                        <h1>Aquí irá el formulario</h1>
+                        
+                        <form name="formulario" id="formulario" method="POST">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        
+                        <label>Nombre:</label>
+                        <input type="hidden" name="idcategoria" id="idcategoria">
+                        <input class="form-control" type="text" name="nombre" id="nombre" maxLength="50" placeholder="nombre" required>
                         </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label>Descripción:</label>
+                        <input class="form-control" type="text" name="descripcion" id="descripcion" maxLength="256" placeholder="Descripción">
+                        </div>
+
+                        <div class="form-group col-12">
+                          <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
+                          <button class="btn btn-danger" onclick="cancelarForm()"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
+                        </div>
+
+
+                        </form>
+                        
+
+                        </div> <!-- fin div Formulario -->
                   </div><!-- /.box -->
               </div><!-- /.col -->
           </div><!-- /.row -->
