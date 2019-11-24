@@ -23,5 +23,8 @@
   <!-- Bootbox -->
   <script src="../public/js/bootbox.min.js"></script>
 
+  <!-- Bootstrap Select -->
+  <script src="../public/js/bootstrap-select.min.js"></script>
+
   </body>
 </html>
