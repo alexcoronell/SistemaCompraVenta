@@ -25,7 +25,7 @@ switch ($_GET["op"]) {
         break;
 
     case 'eliminar':
-        $rspta = $persona->desactivar($idpersona);
+        $rspta = $persona->eliminar($idpersona);
         echo $rspta ? "Persona eliminada" : "Persona no se pudo eliminar";
         break;
 
