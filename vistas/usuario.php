@@ -1,5 +1,15 @@
 <?php
+// Activamos el almacenamiento en el buffer
+ob_start();
+session_start();
+
+if (!isset($_SESSION["nombre"])) {
+  header("Location: login.html");
+} else {
+  
 require 'header.php';
+
+if ($_SESSION['acceso']==1) {
 ?>
 
 <!--Contenido-->
@@ -22,8 +32,8 @@ require 'header.php';
                         <thead>
                           <th>Opciones</th>
                           <th>Nombre</th>
-                          <th>Tipo de Documento</th>
-                          <th>Número de Documento</th>
+                          <th>Tipo Documento</th>
+                          <th>Número Documento</th>
                           <th>Teléfono</th>
                           <th>Email</th>
                           <th>Login</th>
@@ -34,8 +44,8 @@ require 'header.php';
                         <tfoot>
                           <th>Opciones</th>
                           <th>Nombre</th>
-                          <th>Tipo de Documento</th>
-                          <th>Número de Documento</th>
+                          <th>Tipo Documento</th>
+                          <th>Número Documento</th>
                           <th>Teléfono</th>
                           <th>Email</th>
                           <th>Login</th>
@@ -142,7 +152,14 @@ require 'header.php';
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
 <?php
+} else {
+  require 'noacceso.php';
+}
 require 'footer.php'
 ?>
 
 <script src="scripts/usuario.js"></script>
+<?php
+}
+ob_end_flush();
+?>

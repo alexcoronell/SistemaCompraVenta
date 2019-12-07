@@ -1,5 +1,15 @@
 <?php
+// Activamos el almacenamiento en el buffer
+ob_start();
+session_start();
+
+if (!isset($_SESSION["nombre"])) {
+  header("Location: login.html");
+} else {
+  
 require 'header.php';
+
+if ($_SESSION['acceso']==1) {
 ?>
 
 <!--Contenido-->
@@ -37,6 +47,13 @@ require 'header.php';
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
 <?php
+} else {
+  require 'noacceso.php';
+}
 require 'footer.php'
 ?>
 <script src="scripts/permiso.js"></script>
+<?php
+}
+ob_end_flush();
+?>
